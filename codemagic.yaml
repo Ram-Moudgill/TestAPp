@@ -1,0 +1,31 @@
+workflows:
+  react-native-ios:
+    name: React Native iOS
+    max_build_duration: 120
+    instance_type: mac_mini
+    environment:
+            vars:
+                XCODE_WORKSPACE: "TestAPp"
+                XCODE_SCHEME: "TestAPp"
+            node: latest
+            cocoapods: default
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm install
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios
+          pod install
+          # xcode-project build --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+          xcodebuild -sdk iphonesimulator -workspace "$XCODE_WORKSPACE.xcworkspace" -scheme "$XCODE_SCHEME" -configuration Debug
+
+    artifacts:
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/Medicare.app
+          
+      - ios/Build/*.xcarchive
+      - ios/Build/*.ipa
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - ios/Build/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.xcarchive
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/*.app
