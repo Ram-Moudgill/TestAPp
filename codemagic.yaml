@@ -5,8 +5,8 @@ workflows:
     instance_type: mac_mini
     environment:
       vars:
-        XCODE_WORKSPACE: 'apprenenew'
-        XCODE_SCHEME: 'apprenenew'
+        XCODE_WORKSPACE: 'TestAPp'
+        XCODE_SCHEME: 'TestAPp'
       node: latest
       cocoapods: default
     scripts:
