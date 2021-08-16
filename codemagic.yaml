@@ -17,14 +17,7 @@ workflows:
         script: |
           cd ios
           pod install
-          xcode-project build --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
-
+          - xcodebuild build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" CODE_SIGN_INDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
     artifacts:
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/Medicare.app
-
-      - ios/Build/*.xcarchive
-      - ios/Build/*.ipa
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-      - ios/Build/*.app
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.xcarchive
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
