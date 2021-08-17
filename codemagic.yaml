@@ -1,14 +1,14 @@
 workflows:
-  react-native: 0.44.0
+  react-native-ios:
     name: React Native iOS
     max_build_duration: 120
     instance_type: mac_mini
     environment:
-      react-native: 0.44.0
       vars:
         XCODE_WORKSPACE: 'TestAPp'
         XCODE_SCHEME: 'TestAPp'
       node: latest
+      react-native: 0.44.0
       cocoapods: default
     scripts:
       - name: Install npm dependencies
