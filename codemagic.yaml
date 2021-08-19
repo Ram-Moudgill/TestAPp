@@ -5,7 +5,7 @@ workflows:
     instance_type: mac_mini
     environment:
       vars:
-        XCODE_WORKSPACE: 'TestAPp'
+        XCODE_WORKSPACE: 'TestAPp.xcodeproj'
         XCODE_SCHEME: 'TestAPp'
       node: latest
       cocoapods: default
