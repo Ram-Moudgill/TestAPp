@@ -6,7 +6,7 @@ workflows:
     environment:
       vars:
         XCODE_WORKSPACE: 'TestAPp'
-        XCODE_PROJECT: 'TestAPp.xcodeproj'
+        XCODE_PROJECT: './ios/TestAPp.xcodeproj'
         XCODE_SCHEME: 'TestAPp'
       node: latest
       cocoapods: default
