@@ -5,7 +5,8 @@ workflows:
     instance_type: mac_mini
     environment:
       vars:
-        XCODE_WORKSPACE: 'TestAPp.xcodeproj'
+        XCODE_WORKSPACE: 'TestAPp'
+        XCODE_PROJECT: 'TestAPp.xcodeproj'
         XCODE_SCHEME: 'TestAPp'
       node: latest
       cocoapods: default
@@ -16,6 +17,14 @@ workflows:
       - name: Install CocoaPods dependencies
         script: |
           cd ios
+      - name: Run tests
+        script: |
+          xcodebuild \
+          -project "$XCODE_PROJECT" \
+          -scheme "$XCODE_SCHEME" \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 12,OS=14.1' \
+          clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
       - name: Build debug app
         script: |
           xcodebuild build -project "$XCODE_PROJECT" \
