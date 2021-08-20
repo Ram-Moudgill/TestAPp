@@ -17,17 +17,6 @@ workflows:
         script: |
           cd ios
           pod install
-          xcode-project build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME" \ 
-          xcodebuild -sdk iphonesimulator \ 
-          -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' \ 
-          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+          xcode-project build -workspace "$XCODE_WORKSPACE" -scheme "$XCODE_SCHEME"
     artifacts:
-       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/Medicare.app
-             - android/app/build/outputs/**/*.apk
-          
-             - ios/Build/*.xcarchive
-             - ios/Build/*.ipa
-             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-             - ios/Build/*.app
-             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.xcarchive
-             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/*.app
+       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
