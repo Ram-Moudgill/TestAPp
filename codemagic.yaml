@@ -22,4 +22,12 @@ workflows:
           -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=14.5' \ 
           CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
     artifacts:
-       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/Medicare.app
+             - android/app/build/outputs/**/*.apk
+          
+             - ios/Build/*.xcarchive
+             - ios/Build/*.ipa
+             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+             - ios/Build/*.app
+             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.xcarchive
+             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/Products/*-iphonesimulator/*.app
