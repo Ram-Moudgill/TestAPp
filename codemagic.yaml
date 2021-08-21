@@ -13,6 +13,7 @@ workflows:
       - name: Install npm dependencies
         script: |
           npm install
+          react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios
           cd ios
           pod install
           xcodebuild clean archive -workspace TestAPp.xcworkspace -scheme TestAPp -archivePath /TestAPp.xcarchive | xcpretty
