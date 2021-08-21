@@ -19,7 +19,5 @@ workflows:
           xcodebuild clean archive -workspace TestAPp.xcworkspace -scheme TestAPp -archivePath /TestAPp.xcarchive | xcpretty
           xcodebuild -exportArchive -archivePath /TestAPp.xcarchive -exportPath / -exportOptionsPlist /TestAPp.plist | xcpretty
     artifacts:
-       - build/ios/ipa/*.ipa
-       - /ios/ipa/*.ipa
-       - /*.ipa
+       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
         
